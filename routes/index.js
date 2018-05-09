@@ -3,6 +3,11 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
+
+router.get('/', function(req, res, next) {
+  res.send('Hello world');
+});
+
 router.post('/api/form', function(req, res, next) {
   if(req.body.name !== '' && req.body.email !== '' && req.body.message !== '') {
     var transporter = nodemailer.createTransport(smtpTransport({

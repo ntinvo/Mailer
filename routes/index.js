@@ -34,7 +34,9 @@ router.post('/api/form', function(req, res, next) {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return console.log(error);
+            res.status(400).send("Oh uh, something went wrong");
         }
+        res.send("Message sent.");
         console.log('Message sent: %s', info.messageId);
         // Preview only available when sending through an Ethereal account
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
